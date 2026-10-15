@@ -20,7 +20,18 @@ public class PayrollCalculator {
         double payRate = myScanner.nextDouble();
         double grossPay = payRate * hoursWorked;
        //Use %.2f to limit output to 2 decimal points
-        System.out.printf("Gross Pay: " + "%.2f", grossPay);
 
-    }
+
+        //Optional: Calculate the overtime pay
+        if (hoursWorked > 40) {
+            double overtimeHours = hoursWorked - 40;
+            double overtimePayRate = (payRate + (payRate * 0.5));
+            //Calculate additional pay with OT then add to gross pay
+            double overtimePay = overtimeHours * overtimePayRate;
+           grossPay = overtimePay + grossPay;
+
+
+        }
+
+        System.out.printf("Gross Pay: " + "%.2f", grossPay);}
 }
